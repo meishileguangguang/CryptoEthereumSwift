@@ -139,3 +139,7 @@ public final class Crypto {
     
 }
 
+public enum CryptoError : Error {
+	case signFailed
+	case noEnoughSpace
+}
