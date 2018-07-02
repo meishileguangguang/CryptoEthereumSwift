@@ -8,31 +8,6 @@ public enum CryptoEthereumSwiftError: Error {
 
 /// Helper class for cryptographic algorithms.
 public final class Crypto {
-	
-	public static func sha256(_ data: Data) -> Data {
-		return CryptoHash.sha256(data)
-	}
-	/// Hashes data with SHA256 twice
-	///
-	/// - Parameter data: data to be hashed
-	/// - Returns: hash
-	public static func doubleSHA256(_ data: Data) -> Data {
-		return CryptoHash.sha256(CryptoHash.sha256(data))
-	}
-	
-	public static func ripemd160(_ data: Data) -> Data {
-		return CryptoHash.ripemd160(data)
-	}
-	
-	/// Returns 160-bit hash of the data
-	///
-	/// - Parameter data: data to be hashed
-	/// - Returns: hash
-	public static func hash160(_ data: Data) -> Data {
-		return CryptoHash.ripemd160(CryptoHash.sha256(data))
-	}
-	
-	
     /// Produces "hash-based message authentication code" that can be used to verify data integrity and authenticity.
     /// Hash is 512-bit length (64 bytes)
     ///
@@ -40,7 +15,7 @@ public final class Crypto {
     ///   - key: secret key for signing the message
     ///   - data: message to sign
     /// - Returns: 512-bit hash-based message authentication code
-    public static func HMACSHA512(key: Data, data: Data) -> Data {
+	public static func hmacsha512(data: Data, key: Data) -> Data {
         return CryptoHash.hmacsha512(data, key: key)
     }
     
@@ -51,9 +26,29 @@ public final class Crypto {
     ///   - salt: random data (entropy)
     /// - Returns: private key derived from password
     public static func PBKDF2SHA512(_ password: Data, salt: Data) -> Data {
-        return PKCS5.pbkdf2(password, salt: salt, iterations: 2048, keyLength: 64)
+        return Secp256k1.deriveKey(password, salt: salt, iterations: 2048, keyLength: 64)
+    }
+    
+    /// Returns 160-bit hash of the data
+    ///
+    /// - Parameter data: data to be hashed
+    /// - Returns: hash
+    public static func sha256ripemd160(_ data: Data) -> Data {
+        return CryptoHash.ripemd160(CryptoHash.sha256(data))
     }
 	
+	public static func sha256(_ data: Data) -> Data {
+		return CryptoHash.sha256(data)
+	}
+    
+    /// Hashes data with SHA256 twice
+    ///
+    /// - Parameter data: data to be hashed
+    /// - Returns: hash
+    public static func doubleSHA256(_ data: Data) -> Data {
+        return CryptoHash.sha256(CryptoHash.sha256(data))
+    }
+    
     /// Returns SHA3 256-bit (32-byte) hash of the data
     ///
     /// - Parameter data: data to be hashed
@@ -86,7 +81,6 @@ public final class Crypto {
         }
         return encrypter.export(signature: &signatureInInternalFormat)
     }
-	
 	public static func signBtc(_ data: Data, privateKey: Data) throws -> Data {
 		let ctx = secp256k1_context_create(UInt32(SECP256K1_CONTEXT_SIGN))!
 		defer { secp256k1_context_destroy(ctx) }
@@ -109,6 +103,7 @@ public final class Crypto {
 		
 		return der
 	}
+    
     /// Validates a signature of a hash with publicKey. If valid, it guarantees that the hash was signed by the
     /// publicKey's private key.
     ///

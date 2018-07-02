@@ -7,12 +7,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSData *)hmacsha512:(NSData *)data key:(NSData *)key;
 @end
 
-@interface PKCS5 : NSObject
-+ (NSData *)PBKDF2:(NSData *)password salt:(NSData *)salt iterations:(NSInteger)iterations keyLength:(NSInteger)keyLength;
-@end
-
 @interface Secp256k1 : NSObject
 + (NSData *)generatePublicKeyWithPrivateKey:(NSData *)privateKeyData compression:(BOOL)isCompression;
++ (NSData *)deriveKey:(NSData *)password salt:(NSData *)salt iterations:(NSInteger)iterations keyLength:(NSInteger)keyLength;
+
 @end
 
 @interface KeyDerivation : NSObject

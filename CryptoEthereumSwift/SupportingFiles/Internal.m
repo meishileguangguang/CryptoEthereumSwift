@@ -71,16 +71,14 @@
     
     return result;
 }
-
-@end
-
-@implementation PKCS5
 + (NSData *)PBKDF2:(NSData *)password salt:(NSData *)salt iterations:(NSInteger)iterations keyLength:(NSInteger)keyLength {
-    NSMutableData *result = [NSMutableData dataWithLength:keyLength];
-    PKCS5_PBKDF2_HMAC(password.bytes, (int)password.length, salt.bytes, (int)salt.length, (int)iterations, EVP_sha512(), (int)keyLength, result.mutableBytes);
-    return result;
+	NSMutableData *result = [NSMutableData dataWithLength:keyLength];
+	PKCS5_PBKDF2_HMAC(password.bytes, (int)password.length, salt.bytes, (int)salt.length, (int)iterations, EVP_sha512(), (int)keyLength, result.mutableBytes);
+	return result;
 }
+
 @end
+
 
 @implementation KeyDerivation
 
