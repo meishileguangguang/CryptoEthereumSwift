@@ -70,7 +70,6 @@
 		187385E020E9E87200DA7854 /* VerackMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873859120E9E87100DA7854 /* VerackMessage.swift */; };
 		187385E120E9E87200DA7854 /* PaymentURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873859220E9E87100DA7854 /* PaymentURI.swift */; };
 		187385E220E9E87200DA7854 /* RLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873859420E9E87100DA7854 /* RLP.swift */; };
-		187385E320E9E87200DA7854 /* Crypto1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873859520E9E87100DA7854 /* Crypto1.swift */; };
 		187385E420E9E87200DA7854 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873859620E9E87100DA7854 /* Helpers.swift */; };
 		187385E520E9E87200DA7854 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873859720E9E87100DA7854 /* Result.swift */; };
 		187385E620E9E87200DA7854 /* EIP155Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873859820E9E87100DA7854 /* EIP155Signer.swift */; };
@@ -176,7 +175,6 @@
 		1873859120E9E87100DA7854 /* VerackMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerackMessage.swift; sourceTree = "<group>"; };
 		1873859220E9E87100DA7854 /* PaymentURI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentURI.swift; sourceTree = "<group>"; };
 		1873859420E9E87100DA7854 /* RLP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLP.swift; sourceTree = "<group>"; };
-		1873859520E9E87100DA7854 /* Crypto1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crypto1.swift; sourceTree = "<group>"; };
 		1873859620E9E87100DA7854 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		1873859720E9E87100DA7854 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		1873859820E9E87100DA7854 /* EIP155Signer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EIP155Signer.swift; sourceTree = "<group>"; };
@@ -242,33 +240,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1873854920E9E87100DA7854 /* BitcoinKit */ = {
+		1873854920E9E87100DA7854 /* BlockChain */ = {
 			isa = PBXGroup;
 			children = (
+				1896AAC020F6F82C00A08F81 /* BTC */,
+				1896AABF20F6F7DE00A08F81 /* Seed */,
 				187385F020E9E9E300DA7854 /* Wallet */,
 				187385EF20E9E92600DA7854 /* Message */,
-				1873854A20E9E87100DA7854 /* WordList.swift */,
 				1873854D20E9E87100DA7854 /* Extension */,
-				1873854F20E9E87100DA7854 /* BloomFilter.swift */,
-				1873855020E9E87100DA7854 /* Address.swift */,
-				1873855120E9E87100DA7854 /* PeerGroup.swift */,
-				1873855220E9E87100DA7854 /* VarInt.swift */,
-				1873855320E9E87100DA7854 /* InventoryItem.swift */,
-				1873855820E9E87100DA7854 /* Network.swift */,
-				1873855920E9E87100DA7854 /* ByteStream.swift */,
 				1873855C20E9E87100DA7854 /* Key */,
-				1873856220E9E87100DA7854 /* NetworkAddress.swift */,
-				1873856420E9E87100DA7854 /* BlockStore.swift */,
-				1873856920E9E87100DA7854 /* VarString.swift */,
-				1873856C20E9E87100DA7854 /* EIP55.swift */,
-				1873856D20E9E87100DA7854 /* Mnemonic.swift */,
-				1873857320E9E87100DA7854 /* BlockChain.swift */,
-				1873857520E9E87100DA7854 /* MurmurHash.swift */,
 				1873857820E9E87100DA7854 /* Transaction */,
 				1873857720E9E87100DA7854 /* ETH */,
 				1873859320E9E87100DA7854 /* Helpers */,
 			);
-			path = BitcoinKit;
+			path = BlockChain;
 			sourceTree = "<group>";
 		};
 		1873854D20E9E87100DA7854 /* Extension */ = {
@@ -359,12 +344,11 @@
 		1873859320E9E87100DA7854 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1873855820E9E87100DA7854 /* Network.swift */,
 				1873854B20E9E87100DA7854 /* Encoding.swift */,
-				1873859E20E9E87100DA7854 /* Peer.swift */,
 				1873859F20E9E87100DA7854 /* ServiceFlags.swift */,
 				187385A020E9E87100DA7854 /* Serialization.swift */,
 				1873859420E9E87100DA7854 /* RLP.swift */,
-				1873859520E9E87100DA7854 /* Crypto1.swift */,
 				1873859620E9E87100DA7854 /* Helpers.swift */,
 				1873859720E9E87100DA7854 /* Result.swift */,
 				1873859820E9E87100DA7854 /* EIP155Signer.swift */,
@@ -404,6 +388,35 @@
 			path = Wallet;
 			sourceTree = "<group>";
 		};
+		1896AABF20F6F7DE00A08F81 /* Seed */ = {
+			isa = PBXGroup;
+			children = (
+				1873856C20E9E87100DA7854 /* EIP55.swift */,
+				1873856D20E9E87100DA7854 /* Mnemonic.swift */,
+				1873854A20E9E87100DA7854 /* WordList.swift */,
+			);
+			path = Seed;
+			sourceTree = "<group>";
+		};
+		1896AAC020F6F82C00A08F81 /* BTC */ = {
+			isa = PBXGroup;
+			children = (
+				1873859E20E9E87100DA7854 /* Peer.swift */,
+				1873856220E9E87100DA7854 /* NetworkAddress.swift */,
+				1873856420E9E87100DA7854 /* BlockStore.swift */,
+				1873856920E9E87100DA7854 /* VarString.swift */,
+				1873857320E9E87100DA7854 /* BlockChain.swift */,
+				1873857520E9E87100DA7854 /* MurmurHash.swift */,
+				1873854F20E9E87100DA7854 /* BloomFilter.swift */,
+				1873855020E9E87100DA7854 /* Address.swift */,
+				1873855120E9E87100DA7854 /* PeerGroup.swift */,
+				1873855220E9E87100DA7854 /* VarInt.swift */,
+				1873855320E9E87100DA7854 /* InventoryItem.swift */,
+				1873855920E9E87100DA7854 /* ByteStream.swift */,
+			);
+			path = BTC;
+			sourceTree = "<group>";
+		};
 		1AD1D61120B7E822007AFF80 = {
 			isa = PBXGroup;
 			children = (
@@ -427,7 +440,7 @@
 		1AD1D61D20B7E822007AFF80 /* CryptoEthereumSwift */ = {
 			isa = PBXGroup;
 			children = (
-				1873854920E9E87100DA7854 /* BitcoinKit */,
+				1873854920E9E87100DA7854 /* BlockChain */,
 				1AD1D65720B7F2B0007AFF80 /* Source */,
 				1AD1D65820B7F2BD007AFF80 /* SupportingFiles */,
 				1AD1D65520B7F252007AFF80 /* CryptoSwift.framework */,
@@ -675,7 +688,6 @@
 				187385DF20E9E87200DA7854 /* TransactionWitness.swift in Sources */,
 				187385B420E9E87200DA7854 /* HDPublicKey.swift in Sources */,
 				187385A320E9E87100DA7854 /* MerkleBlockMessage.swift in Sources */,
-				187385E320E9E87200DA7854 /* Crypto1.swift in Sources */,
 				187385A520E9E87100DA7854 /* BloomFilter.swift in Sources */,
 				187385DB20E9E87200DA7854 /* BatchFactory.swift in Sources */,
 				187385E520E9E87200DA7854 /* Result.swift in Sources */,
