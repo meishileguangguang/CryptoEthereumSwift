@@ -12,7 +12,8 @@ public class Network {
 	public static let btcMainnet: Network = BTCMainnet()
 	public static let ethMainnet: Network = EthMainnet()
 	public static let testnet: Network = Testnet()
-	
+	public static let ethTestnet: Network = EthTestnet()
+
 	public var name: String { return "" }
 	public var alias: String { return "" }
 	var version: UInt8 { return 0 }
