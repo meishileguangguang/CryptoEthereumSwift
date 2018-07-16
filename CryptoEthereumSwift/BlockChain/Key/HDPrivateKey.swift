@@ -136,16 +136,9 @@ extension HDPrivateKey {
 	private static	func getStorageKey(network: Network, user: String) -> (privateKey: String, chainCodeKey: String, passwordKey: String) {
 		var keyPrefix = user + "TestNet"
 		
-		switch network {
-		case .btcMainnet:
-			keyPrefix = "BtcMainnet"
-			break
-		case .ethMainnet:
-			keyPrefix = "EthMainnet"
-			break
-		default: break
+		if network != .testnet {
+			keyPrefix = "Mainnet"
 		}
-		
 		return (keyPrefix +  "HDPrivateKeyRaw", keyPrefix + "HDPrivateKeyChainCode", keyPrefix + "pbkdf2Password")
 	}
 	

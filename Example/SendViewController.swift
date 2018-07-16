@@ -35,17 +35,18 @@ class SendViewController: UIViewController {
 		let seed = Mnemonic.seed(mnemonic: mnemonic)
 		
 		//btcMainnet
-		let wallet = HDWallet(seed: seed, network: Network.testnet)
+		let wallet = HDWallet(seed: seed, network: Network.btcMainnet)
 		var address = try! wallet.generateBtcAddress(at: 0)
 		print("creatWallet BtcAddress: " + address) //121x5Nj7KKjSTZLprRxd1rRA9UkQA9iNTw
-		wallet.saveHDPrivateKey(password: "123456")
 		
 		//ethMainnet
 		wallet.network = Network.ethMainnet
 		address = try! wallet.generateEthAddress(at: 0)
 		print("creatWallet EthAddress: " + address) //0x5A17F8d55e18e8f67250125DA3025d32633f8Bc9
-		wallet.saveHDPrivateKey(password: "123456")
 		
+		//save
+		wallet.saveHDPrivateKey(password: "123456")
+
 		//let privateKey = try! PrivateKey(wif: "cMfWomdtnUdar3gYyWKaSUEuNKh7sU4U4WEWXJ4xqFPS4htEsjy7")
 		//let address = privateKey.publicKey().toAddress();
 	}

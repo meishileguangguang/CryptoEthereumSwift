@@ -176,11 +176,29 @@ public class Testnet: Network {
 	fileprivate override init() {}
 }
 
-struct Checkpoint {
-	let height: Int32
-	let hash: Data
-	let timestamp: UInt32
-	let target: UInt32
+public class EthTestnet: Network {
+	public override var name: String {
+		return "ethTestnet"
+	}
+	public override var alias: String {
+		return "ethTestnet"
+	}
+	override var coinType: UInt32 {
+		return 60
+	}
+	
+	override var hdPublicKeyPrefix: UInt32 {
+		return 0x043587cf
+	}
+	override var hdPrivateKeyPrefix: UInt32 {
+		return 0x04358394
+	}
+	
+	override var ethChainID: Int {
+		return 3
+	}
+
+	fileprivate override init() {}
 }
 
 public class EthMainnet: Network {
@@ -194,16 +212,12 @@ public class EthMainnet: Network {
 		return 60
 	}
 	
-	public override var dnsSeeds: [String] {
-		return [
-			"testnet-seed.bitcoin.jonasschnelli.ch", // Jonas Schnelli
-			"testnet-seed.bluematt.me",              // Matt Corallo
-			"testnet-seed.bitcoin.petertodd.org",    // Peter Todd
-			"testnet-seed.bitcoin.schildbach.de",    // Andreas Schildbach
-			"bitcoin-testnet.bloqseeds.net",         // Bloq
-		]
-	}
-	
-	
 	fileprivate override init() {}
+}
+
+struct Checkpoint {
+	let height: Int32
+	let hash: Data
+	let timestamp: UInt32
+	let target: UInt32
 }
