@@ -124,6 +124,9 @@ public class Testnet: Network {
 	override var version: UInt8 {
 		return 0x6f
 	}
+	override var coinType: UInt32 {
+		return 0
+	}
 	override var btcPrivatekeyPrefix: UInt8 {
 		return 0xef
 	}
@@ -141,9 +144,6 @@ public class Testnet: Network {
 	}
 	public override var port: UInt32 {
 		return 18333
-	}
-	override var ethChainID: Int {
-		return 3
 	}
 	public override var dnsSeeds: [String] {
 		return [
