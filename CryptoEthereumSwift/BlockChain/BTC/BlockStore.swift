@@ -43,7 +43,7 @@ public class SQLiteBlockStore : BlockStore {
     private var database: OpaquePointer?
     private var statements = [String: OpaquePointer!]()
 
-    public init(file: URL, network: Network = .testnet) throws {
+    public init(file: URL, network: Network = .btcTestnet) throws {
         self.network = network
 
         try execute { sqlite3_open(file.path, &database) }

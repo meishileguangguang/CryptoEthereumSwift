@@ -53,7 +53,7 @@ public final class HDWallet {
         // Public derivation is used at this level.
 
     }
-	public init?(password: String, network: Network = .testnet, user: String = "default") {
+	public init?(password: String, network: Network = .btcTestnet, user: String = "default") {
 		guard let masterPrivateKey = HDPrivateKey(password: password, network: network, user: user) else { return nil }
 		self.masterPrivateKey = masterPrivateKey
 		self.network = network

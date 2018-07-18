@@ -47,15 +47,15 @@ public class Peer : NSObject, StreamDelegate {
     private var inputStream: InputStream!
     private var outputStream: OutputStream!
 
-    public convenience init(network: Network = .testnet) {
+    public convenience init(network: Network = .btcTestnet) {
         self.init(host: network.dnsSeeds[Int(arc4random_uniform(UInt32(network.dnsSeeds.count)))], port: Int(network.port), network: network)
     }
 
-    public convenience init(host: String, network: Network = .testnet) {
+    public convenience init(host: String, network: Network = .btcTestnet) {
         self.init(host: host, port: Int(network.port), network: network)
     }
 
-    public init(host: String, port: Int, network: Network = .testnet) {
+    public init(host: String, port: Int, network: Network = .btcTestnet) {
         self.host = host
         self.port = UInt32(port)
         self.network = network

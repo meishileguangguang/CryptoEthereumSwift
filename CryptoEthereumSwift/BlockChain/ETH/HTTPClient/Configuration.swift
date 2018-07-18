@@ -26,7 +26,7 @@ public struct Configuration {
         case .ethMainnet:
             return URL(string: "https://api.etherscan.io")!
             
-        case .testnet:
+        case .btcTestnet:
             return URL(string: "https://ropsten.etherscan.io")!
             
         case .btcMainnet:

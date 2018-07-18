@@ -27,8 +27,8 @@ public struct PrivateKey {
 		switch addressPrefix {
 		case Network.btcMainnet.btcPrivatekeyPrefix:
 			network = .btcMainnet
-		case Network.testnet.btcPrivatekeyPrefix:
-			network = .testnet
+		case Network.btcTestnet.btcPrivatekeyPrefix:
+			network = .btcTestnet
 		default:
 			throw PrivateKeyError.invalidFormat
 		}
@@ -43,7 +43,7 @@ public struct PrivateKey {
         raw = Data(privateKey)
     }
 
-    public init(data: Data, network: Network = .testnet) {
+    public init(data: Data, network: Network = .btcTestnet) {
         raw = data
         self.network = network
     }

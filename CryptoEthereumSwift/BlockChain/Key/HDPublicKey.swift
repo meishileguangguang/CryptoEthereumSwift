@@ -26,7 +26,7 @@ public class HDPublicKey {
         self.childIndex = 0
     }
 
-    init(privateKey: HDPrivateKey, chainCode: Data, network: Network = .testnet, depth: UInt8, fingerprint: UInt32, childIndex: UInt32) {
+    init(privateKey: HDPrivateKey, chainCode: Data, network: Network = .btcTestnet, depth: UInt8, fingerprint: UInt32, childIndex: UInt32) {
         self.network = network
         self.raw = PublicKey.from(privateKey: privateKey.raw, compression: true)
         self.chainCode = chainCode
@@ -35,7 +35,7 @@ public class HDPublicKey {
         self.childIndex = childIndex
     }
 
-    init(raw: Data, chainCode: Data, network: Network = .testnet, depth: UInt8, fingerprint: UInt32, childIndex: UInt32) {
+    init(raw: Data, chainCode: Data, network: Network = .btcTestnet, depth: UInt8, fingerprint: UInt32, childIndex: UInt32) {
         self.network = network
         self.raw = raw
         self.chainCode = chainCode

@@ -72,7 +72,7 @@ class SettingsViewController: UIViewController {
 
 		let seed = Mnemonic.seed(mnemonic: mnemonic)
 
-		let wallet = HDWallet(seed: seed, network: .testnet)
+		let wallet = HDWallet(seed: seed, network: .btcTestnet)
 
 		let address = try! wallet.generateBtcAddress(at: 0)
 
@@ -97,7 +97,7 @@ class SettingsViewController: UIViewController {
 	func testSignMessage() {
 		let password = "123456"
 
-		if let wallet = HDWallet(password: password, network: .testnet) {
+		if let wallet = HDWallet(password: password, network: .btcTestnet) {
 
 //			let privateKey = try! wallet.generateBtcPrivateKey(at: 0)
 //			let address1 = privateKey.btcPublicKey().generateBtcAddress()

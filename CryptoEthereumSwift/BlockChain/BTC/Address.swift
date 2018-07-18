@@ -48,8 +48,8 @@ public struct Address {
         switch addressPrefix {
         case Network.btcMainnet.version:
             network = .btcMainnet
-        case Network.testnet.version:
-            network = .testnet
+        case Network.btcTestnet.version:
+            network = .btcTestnet
         default:
             throw AddressError.wrongNetwork
         }

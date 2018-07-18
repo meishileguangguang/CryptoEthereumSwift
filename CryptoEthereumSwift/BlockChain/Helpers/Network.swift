@@ -10,8 +10,8 @@ import Foundation
 
 public class Network {
 	public static let btcMainnet: Network = BTCMainnet()
+	public static let btcTestnet: Network = BtcTestnet()
 	public static let ethMainnet: Network = EthMainnet()
-	public static let testnet: Network = Testnet()
 	public static let ethTestnet: Network = EthTestnet()
 
 	public var name: String { return "" }
@@ -114,12 +114,12 @@ public class BTCMainnet: Network {
 	fileprivate override init() {}
 }
 
-public class Testnet: Network {
+public class BtcTestnet: Network {
 	public override var name: String {
-		return "testnet"
+		return "btcTestnet"
 	}
 	public override var alias: String {
-		return "regtest"
+		return "btcTestnet"
 	}
 	override var version: UInt8 {
 		return 0x6f
