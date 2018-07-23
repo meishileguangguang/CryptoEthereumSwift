@@ -24,22 +24,18 @@ public struct EthRawTransaction {
 }
 
 extension EthRawTransaction {
-    public init(value: Wei, to: String, gasPrice: Int, gasLimit: Int, nonce: Int) {
+	public init(value: Wei, to: String, gasPrice: Int, gasLimit: Int, nonce: Int, data: Data) {
         self.value = value
         self.to = EthAddress(string: to)
         self.gasPrice = gasPrice
         self.gasLimit = gasLimit
         self.nonce = nonce
-        self.data = Data()
+        self.data = data
     }
     
-    public init(wei: String, to: String, gasPrice: Int, gasLimit: Int, nonce: Int, data: Data = Data()) {
-        self.value = Wei(wei)!
-        self.to = EthAddress(string: to)
-        self.gasPrice = gasPrice
-        self.gasLimit = gasLimit
-        self.nonce = nonce
-        self.data = data
+    public init(weiString: String, to: String, gasPrice: Int, gasLimit: Int, nonce: Int, data: Data = Data()) {
+        let wei = Wei(weiString)!
+		self.init(value: wei, to: to, gasPrice: gasPrice, gasLimit: gasLimit, nonce: nonce, data: data)
     }
 	
 	public init(ether: String, to: String, gasPrice: Int, gasLimit: Int, nonce: Int, data: Data = Data()) {
@@ -49,7 +45,7 @@ extension EthRawTransaction {
 		} catch let error {
 			fatalError("Error: \(error.localizedDescription)")
 		}
-		self.init(value: wei, to: to, gasPrice: gasPrice, gasLimit: gasLimit, nonce: nonce)
+		self.init(value: wei, to: to, gasPrice: gasPrice, gasLimit: gasLimit, nonce: nonce, data: data)
 	}
 }
 
