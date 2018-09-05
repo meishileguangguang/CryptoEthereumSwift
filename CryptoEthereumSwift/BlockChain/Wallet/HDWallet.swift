@@ -67,19 +67,20 @@ public final class HDWallet {
 	public func dumpEthPrivateKey(at index: UInt32) throws -> String {
 		return try generateEthPrivateKey(at: index).raw.toHexString()
 	}
-	public func generateBtcPrivateKey(at index: UInt32) throws -> PrivateKey {
-		return try hdPrivateKey(change: .external).derived(at: index).btcPrivateKey()
+	
+	public func generateBtcPrivateKey(with account: UInt32 = 0, at index: UInt32) throws -> PrivateKey {
+		return try hdPrivateKey(change: .external, account: account).derived(at: index).btcPrivateKey()
 	}
 	
 	//hdPrivateKey
     public func hdPrivateKey() throws -> HDPrivateKey {
         return try hdPrivateKey(change: .external)
     }
-	private func hdPrivateKey(change: Change) throws -> HDPrivateKey {
+	private func hdPrivateKey(change: Change, account: UInt32 = 0) throws -> HDPrivateKey {
 		return try masterPrivateKey
 			.derived(at: 44, hardened: true)
 			.derived(at: network.coinType, hardened: true)
-			.derived(at: 0, hardened: true)
+			.derived(at: account, hardened: true)
 			.derived(at: change.rawValue)
 
 	}
@@ -88,8 +89,9 @@ public final class HDWallet {
 	public func generateEthAddress(at index: UInt32) throws -> String {
 		return try generateEthPrivateKey(at: index).ethPublicKey().generateEthAddress()
 	}
-	public func generateBtcAddress(at index: UInt32) throws -> String {
-		return try generateBtcPrivateKey(at: index).btcPublicKey().generateBtcAddress()
+
+	public func generateBtcAddress(with account: UInt32 = 0, at index: UInt32) throws -> String {
+		return try generateBtcPrivateKey(with: account, at: index).btcPublicKey().generateBtcAddress()
 	}
 
 	//保存
